@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { createNumbersArr } from "../../utils/createNumbersArr";
+import s from "./Pagination.module.css";
 
 interface IPaginationProps {
   activePage: number;
@@ -23,21 +24,30 @@ export const Pagination: FC<IPaginationProps> = ({
     setActivePage(item);
   };
   return (
-    <div>
-      <button disabled={activePage === 1} onClick={onPrevPageHandler}>
-        Prev
+    <div className={s.pagination}>
+      <button
+        className={s.btn}
+        disabled={activePage === 1}
+        onClick={onPrevPageHandler}
+      >
+        prev
       </button>
       {buttonsArray.map((item: number) => (
         <button
-          style={{ backgroundColor: item === activePage ? "green" : "" }}
+          className={s.btn}
+          style={{ backgroundColor: item === activePage ? "#86c023" : "" }}
           key={item}
           onClick={() => onChangePageHandler(item)}
         >
           {item}
         </button>
       ))}
-      <button disabled={totalPages === activePage} onClick={onNextPageHandler}>
-        Next
+      <button
+        className={s.btn}
+        disabled={totalPages === activePage}
+        onClick={onNextPageHandler}
+      >
+        next
       </button>
     </div>
   );

@@ -3,7 +3,10 @@ import "./Loader.css";
 
 export const Loader: FC = () => {
   return (
-    <div className="lds-heart">
+    <div className="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
       <div></div>
     </div>
   );

@@ -1,0 +1,20 @@
+.pagination {
+  text-align: center;
+  padding: 0 25px;
+  display: inline-block;
+  height: 45px;
+  background-color: #eee;
+  border-radius: 35px;
+}
+.btn {
+  border: none;
+  padding: 0 13px;
+  transition: ease 400ms;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 45px;
+}
+
+.btn:hover {
+  color: #86c023;
+}

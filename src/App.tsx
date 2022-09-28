@@ -14,7 +14,7 @@ function App() {
     const fetchData = async () => {
       setIsLoading(true);
       const response = await axios.get(
-        `https://api.instantwebtools.net/v1/passenger?page=${activePage}&size=10`
+        `https://api.instantwebtools.net/v1/passenger?page=${activePage}&size=21`
       );
       setData(response.data.data);
       setTotalPages(response.data.totalPages - 1);
@@ -25,7 +25,7 @@ function App() {
   }, [activePage]);
 
   return (
-    <div>
+    <div className="App">
       {isLoading === true ? (
         <Loader />
       ) : (
@@ -40,13 +40,13 @@ function App() {
               ))}
             </>
           )}
+          <Pagination
+            setActivePage={setActivePage}
+            activePage={activePage}
+            totalPages={totalPages}
+          />
         </>
       )}
-      <Pagination
-        setActivePage={setActivePage}
-        activePage={activePage}
-        totalPages={totalPages}
-      />
     </div>
   );
 }
