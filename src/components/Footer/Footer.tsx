@@ -1,7 +1,11 @@
 import { FC } from "react";
+import s from "./Footer.module.css";
+import { FireOutlined } from "@ant-design/icons";
 
-const Footer: FC = () => {
-  return <div>It will be my footer</div>;
+export const Footer: FC = () => {
+  return (
+    <div className={s.footer}>
+      <FireOutlined />
+    </div>
+  );
 };
-
-export default Footer;

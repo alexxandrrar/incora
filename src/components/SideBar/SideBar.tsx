@@ -17,7 +17,7 @@ export const SideBar: React.FC = () => {
 
   return (
     <Menu
-      style={{ height: "100vh" }}
+      style={{ height: "80vh" }}
       defaultSelectedKeys={["1"]}
       mode={"vertical"}
       inlineCollapsed={isToggleCollapse}

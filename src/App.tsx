@@ -1,7 +1,7 @@
 import { Col, Row } from "antd";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import { Footer } from "./components/Footer/Footer";
 import { SideBar } from "./components/SideBar/SideBar";
 import { PaginationPage } from "./pages/PaginationPage/PaginationPage";
 
