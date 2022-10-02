@@ -35,7 +35,7 @@ export const Pagination: FC<IPaginationProps> = ({
       {buttonsArray.map((item: number) => (
         <button
           className={s.btn}
-          style={{ backgroundColor: item === activePage ? "#86c023" : "" }}
+          style={{ backgroundColor: item === activePage ? "#1890ff" : "" }}
           key={item}
           onClick={() => onChangePageHandler(item)}
         >

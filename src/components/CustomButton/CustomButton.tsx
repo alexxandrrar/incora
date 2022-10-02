@@ -1,12 +1,20 @@
+import React from "react";
 import { Button } from "antd";
-import { FC } from "react";
 
-const style = {};
+interface IButtonProps {
+  children?: React.ReactNode;
+  props?: any;
+  onClick?: any;
+}
 
-export const CustomButton: FC = () => {
+export const CustomButton: React.FC<IButtonProps> = ({
+  onClick,
+  children,
+  ...props
+}) => {
   return (
-    <div className="site-button-ghost-wrapper" style={style}>
-      <Button>Logout</Button>
-    </div>
+    <Button {...props} onClick={onClick}>
+      {children}
+    </Button>
   );
 };

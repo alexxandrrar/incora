@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Menu, Divider, Button, Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import {
@@ -10,14 +10,21 @@ import {
 } from "@ant-design/icons";
 
 export const SideBar: React.FC = () => {
+  const [token, setToken] = useState<string | null>(
+    localStorage.getItem("token")
+  );
   const [isToggleCollapse, setIsToggleCollapse] = useState<boolean>(true);
   const onCollapseHandler = () =>
     setIsToggleCollapse((prevState: boolean) => !prevState);
   const onBackHandler = () => window.history.back();
 
+  useEffect(() => {
+    setToken(localStorage.getItem("token"));
+  }, []);
+
   return (
     <Menu
-      style={{ height: "80vh" }}
+      style={{ height: "100%" }}
       defaultSelectedKeys={["1"]}
       mode={"vertical"}
       inlineCollapsed={isToggleCollapse}
@@ -45,14 +52,16 @@ export const SideBar: React.FC = () => {
         </Col>
       </Row>
       <Menu.Item key="1" icon={<SmileOutlined />}>
-        <Link to={"/"}>Task 1</Link>
+        <Link to={"/script"}>Task 1</Link>
       </Menu.Item>
       <Menu.Item key="2" icon={<SmileOutlined />}>
         <Link to={"/pagination"}>Task 2</Link>
       </Menu.Item>
-      <Menu.Item key="3" icon={<SettingOutlined />}>
-        <Link to={"/settings"}>Settings</Link>
-      </Menu.Item>
+      {token !== null && (
+        <Menu.Item key="3" icon={<SettingOutlined />}>
+          <Link to={"/settings"}>Settings</Link>
+        </Menu.Item>
+      )}
     </Menu>
   );
 };

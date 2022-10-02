@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import { IItems } from "../../types/data";
-import { Pagination } from "../../components/Paginatiom/Pagination";
+import { IItem } from "../../types/data";
+import { Pagination } from "../../components/Pagination/Pagination";
 import { Loader } from "../../components/Loading/Loader";
 
 export function PaginationPage() {
-  const [data, setData] = useState<null | IItems[]>(null);
+  const [data, setData] = useState<null | IItem[]>(null);
   const [activePage, setActivePage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -15,7 +15,7 @@ export function PaginationPage() {
     const fetchData = async () => {
       setIsLoading(true);
       const response = await axios.get(
-        `https://api.instantwebtools.net/v1/passenger?page=${activePage}&size=21`
+        `https://api.instantwebtools.net/v1/passenger?page=${activePage}&size=25`
       );
       setData(response.data.data);
       setTotalPages(response.data.totalPages - 1);
@@ -31,16 +31,13 @@ export function PaginationPage() {
         <Loader />
       ) : (
         <>
-          {data !== null && (
-            <>
-              {data.map((item: IItems) => (
-                <div key={item._id}>
-                  {item.name}
-                  {item.trips}
-                </div>
-              ))}
-            </>
-          )}
+          {data !== null &&
+            data.map((item: IItem) => (
+              <div key={item._id}>
+                {item.name}
+                {item.trips}
+              </div>
+            ))}
           <Pagination
             setActivePage={setActivePage}
             activePage={activePage}
