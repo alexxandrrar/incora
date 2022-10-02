@@ -6,11 +6,12 @@ import { Footer } from "./components/Footer/Footer";
 import { SideBar } from "./components/SideBar/SideBar";
 import { PaginationPage } from "./pages/PaginationPage/PaginationPage";
 import { TypeScriptPage } from "./pages/TypeScriptPage/TypeScriptPage";
-import { LoginationPage } from "./pages/LoginationPage";
+import { LoginationPage } from "./pages/LoginationPage/LoginationPage";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 import { SettingsPage } from "./pages/SettingsPage/SettingsPage";
 
 import "antd/dist/antd.min.css";
+import "./App.css";
 
 function App() {
   const [token, setToken] = useState<string | null>(
@@ -23,12 +24,17 @@ function App() {
 
   return (
     <Row>
-      <Col span={24}>
-        <Header />
-      </Col>
-      <Col span={3}>
-        <SideBar />
-      </Col>
+      {token !== null && (
+        <>
+          <Col span={24}>
+            <Header />
+          </Col>
+          <Col span={3}>
+            <SideBar />
+          </Col>
+        </>
+      )}
+
       <Col span={21}>
         <Routes>
           <Route path="/script" element={<TypeScriptPage />} />
