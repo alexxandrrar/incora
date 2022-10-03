@@ -3,8 +3,8 @@ import { Button } from "antd";
 
 interface IButtonProps {
   children?: React.ReactNode;
+  onClick?: () => void;
   props?: any;
-  onClick?: any;
 }
 
 export const CustomButton: React.FC<IButtonProps> = ({

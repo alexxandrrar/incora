@@ -26,14 +26,14 @@ export const SideBar: React.FC = () => {
     <Menu
       style={{ height: "100%" }}
       defaultSelectedKeys={["1"]}
-      mode={"vertical"}
+      mode={"inline"}
       inlineCollapsed={isToggleCollapse}
     >
       <Row>
         <Col>
           <Divider key={"7"} orientation={"left"}>
             {!isToggleCollapse && (
-              <Button onClick={onBackHandler}>
+              <Button key={"collapsed-Button"} onClick={onBackHandler}>
                 <ArrowLeftOutlined />
               </Button>
             )}
@@ -41,7 +41,7 @@ export const SideBar: React.FC = () => {
         </Col>
         <Col>
           <Divider key="5" orientation={"right"}>
-            <Button onClick={onCollapseHandler}>
+            <Button key={"icon-button"} onClick={onCollapseHandler}>
               {isToggleCollapse ? (
                 <MenuUnfoldOutlined />
               ) : (

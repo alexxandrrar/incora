@@ -11,7 +11,6 @@ import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 import { SettingsPage } from "./pages/SettingsPage/SettingsPage";
 
 import "antd/dist/antd.min.css";
-import "./App.css";
 
 function App() {
   const [token, setToken] = useState<string | null>(

@@ -3,7 +3,7 @@ import { FC, useState, useEffect } from "react";
 import { PageHeader } from "antd";
 import { CustomButton } from "../CustomButton/CustomButton";
 
-import "./Header.module.css";
+import s from "./Header.module.css";
 
 export const Header: FC = () => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ export const Header: FC = () => {
   }, []);
 
   return (
-    <div className="site-page-header-ghost-wrapper">
+    <div className={s.site_page_header_ghost_wrapper}>
       <PageHeader
         ghost={false}
         title="INCORA COURSE"

@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const f = `
+const code = `
   const firstUser: IUser = {
     id: 1,
     name: "Sasha",
@@ -63,10 +63,4 @@ const f = `
     },
   };
 `;
-export const TypeScriptPage: FC = () => {
-  return (
-    <>
-      <pre>{f}</pre>
-    </>
-  );
-};
+export const TypeScriptPage: FC = () => <pre>{code}</pre>;
