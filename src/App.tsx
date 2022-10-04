@@ -1,25 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Col, Row } from "antd";
+import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
+import { SideBar } from "./components/SideBar/SideBar";
+import { PaginationPage } from "./pages/PaginationPage/PaginationPage";
+import { TypeScriptPage } from "./pages/TypeScriptPage/TypeScriptPage";
+import { LoginationPage } from "./pages/LoginationPage/LoginationPage";
+import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
+import { SettingsPage } from "./pages/SettingsPage/SettingsPage";
+
+import "antd/dist/antd.min.css";
 
 function App() {
+  const [token, setToken] = useState<string | null>(
+    localStorage.getItem("token")
+  );
+
+  useEffect(() => {
+    setToken(localStorage.getItem("token"));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Row>
+      {token !== null && (
+        <>
+          <Col span={24}>
+            <Header />
+          </Col>
+          <Col span={3}>
+            <SideBar />
+          </Col>
+        </>
+      )}
+
+      <Col span={21}>
+        <Routes>
+          <Route path="/script" element={<TypeScriptPage />} />
+          <Route path="/pagination" element={<PaginationPage />} />
+          <Route path="/logination" element={<LoginationPage />} />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute token={token}>
+                <SettingsPage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Col>
+      <Col span={24}>
+        <Footer />
+      </Col>
+    </Row>
   );
 }
 
