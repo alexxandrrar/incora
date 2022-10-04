@@ -23,16 +23,12 @@ function App() {
 
   return (
     <Row>
-      {token !== null && (
-        <>
-          <Col span={24}>
-            <Header />
-          </Col>
-          <Col span={3}>
-            <SideBar />
-          </Col>
-        </>
-      )}
+      <Col span={24}>
+        <Header />
+      </Col>
+      <Col span={3}>
+        <SideBar />
+      </Col>
 
       <Col span={21}>
         <Routes>
